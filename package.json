@@ -1,18 +1,33 @@
 {
   "name": "vue-json-print",
+  "description": "Pretty prints JSON object in a collapsible tree view",
   "version": "0.1.0",
-  "private": true,
+  "author": "Tanveer Karim <contact@tkarimdesign.com>",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "json",
+    "print",
+    "tree"
+  ],
+  "main": "./src/components/JsonTree.vue",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanmancan/vue-json-print.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tanmancan/vue-json-print/issues"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "core-js": "^3.4.3",
-    "vue": "^2.6.10"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-unit-mocha": "^4.1.0",
