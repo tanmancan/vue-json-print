@@ -50,7 +50,10 @@ export default {
   },
   computed: {
     data() {
-      if (this.dataObject) return this.dataObject;
+      if (typeof this.dataObject === 'boolean') return this.dataObject;
+      if (this.dataObject) {
+        return this.dataObject;
+      }
       if (this.dataString) {
         try {
           return JSON.parse(this.dataString);
