@@ -1,29 +1,37 @@
-# vue-json-print
+# Vue JSON Print
 
-## Project setup
-```
-npm install
-```
+## Install
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+```bash
+npm install vue-json-print
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+## Usage
+
+This package provides a single file component meant to work with your existing Vue app. To use imply import the component and use with your app.
+
+```javascript
+const JsonTree = import 'json-tree-print'
+const Vue from 'vue';
+
+Vue.component('json-tree', JsonTree);
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Options
 
-### Lints and fixes files
-```
-npm run lint
-```
+### `dataObject` (`string|number|boolean|null|object|array`)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Javascript data to be displayed. Values must be valid JSON types. If an object is provided, keys must
+be valid JSON type. (ie. not `Symbol`);
+
+### `dataString` (`string`)
+
+A valid JSON string to be displayed. If both `dataString` and `dataObject` are passed, `dataObject` will be printed.
+
+### `expanded` (`boolean`)
+
+Displays the tree in an expanded state. By default each nested node will always be collapsed.
+
+
+
+&copy; Tanveer Karim

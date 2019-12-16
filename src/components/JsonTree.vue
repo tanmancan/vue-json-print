@@ -133,7 +133,8 @@ export default {
     },
   },
   methods: {
-    toggleNode() {
+    toggleNode(e) {
+      e.preventDefault();
       if (this.isPrimitive) return;
       this.open = !this.open;
     },
