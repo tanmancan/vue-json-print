@@ -1,6 +1,8 @@
 # Vue JSON Print
 
-Pretty prints JSON object in a collapsible tree view
+Pretty prints JSON object in a collapsible tree view.
+
+Demo: https://tanmancan.github.io/examples/vue-json-print/
 
 ![](public/example.png)
 *example JSON from: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON*
