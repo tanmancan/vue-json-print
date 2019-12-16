@@ -1,7 +1,7 @@
 {
   "name": "vue-json-print",
   "description": "Pretty prints JSON object in a collapsible tree view",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Tanveer Karim <contact@tkarimdesign.com>",
   "license": "MIT",
   "keywords": [
