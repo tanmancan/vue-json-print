@@ -11,13 +11,18 @@
     <div
       v-if="isObject || isArray"
       :class="`data__list-items data__list-items--${openClassModifier}`">
-      <JsonTree
-        v-for="(node, key) in data"
-        :key="key"
-        :object-key="key"
-        :data-object="node"
-        :expanded="expanded"
-      />
+      <div v-if="!showDepth">...</div>
+      <template v-else>
+        <JsonTree
+          v-for="(node, key) in data"
+          :key="key"
+          :object-key="key"
+          :data-object="node"
+          :expanded="expanded"
+          :depth="depth"
+          v-bind:currentDepth="currentDepth"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -42,11 +47,23 @@ export default {
       type: Boolean,
       default: false,
     },
+    depth: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       open: this.expanded,
+      currentDepth: 0,
     };
+  },
+  created() {
+    if (!this.$attrs.currentDepth && this.$attrs.currentDepth !== 0) {
+      this.currentDepth = 0;
+    } else {
+      this.currentDepth = this.$attrs.currentDepth + 1;
+    }
   },
   computed: {
     data() {
@@ -130,6 +147,10 @@ export default {
       return this.open
         ? 'opened'
         : 'closed';
+    },
+    showDepth() {
+      if (this.currentDepth === 0 || this.depth === 0) return true;
+      return this.currentDepth < this.depth;
     },
   },
   methods: {
