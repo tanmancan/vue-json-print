@@ -1,28 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <JsonTree :data-object="exampleData" expanded/>
+    <JsonTree :data-string="exampleDataString"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import JsonTree from './components/JsonTree.vue';
+import exampleData from './assets/example.json';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    JsonTree,
+  },
+  data() {
+    return {
+      exampleData,
+      exampleDataString: '{"test": false}',
+    };
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
