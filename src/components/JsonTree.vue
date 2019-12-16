@@ -15,7 +15,8 @@
         v-for="(node, key) in data"
         :key="key"
         :object-key="key"
-        :data="node"
+        :data-object="node"
+        :expanded="expanded"
       />
     </div>
   </div>
@@ -25,21 +26,40 @@
 export default {
   name: 'JsonTree',
   props: {
-    data: {
+    dataObject: {
       type: [Object, Array, String, Number, Boolean],
-      default: null
+      default: null,
+    },
+    dataString: {
+      type: String,
+      default: undefined,
     },
     objectKey: {
       type: [String, Number],
-      default: 'DATA'
-    }
+      default: 'DATA',
+    },
+    expanded: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      open: false
+      open: this.expanded,
     };
   },
   computed: {
+    data() {
+      if (this.dataObject) return this.dataObject;
+      if (this.dataString) {
+        try {
+          return JSON.parse(this.dataString);
+        } catch (error) {
+          return `ERROR: ${error.message}`;
+        }
+      }
+      return null;
+    },
     dataValue() {
       if (this.isArray) return `Array[${this.data.length}]`;
       if (this.isObject) return 'Object';
@@ -57,14 +77,19 @@ export default {
     },
     isPrimitive() {
       return (
-        typeof this.data === 'string' ||
-        typeof this.data === 'number' ||
-        typeof this.data === 'boolean' ||
-        this.isNull
+        typeof this.data === 'string'
+        || typeof this.data === 'number'
+        || typeof this.data === 'boolean'
+        || this.isNull
       );
     },
     isObject() {
-      return !this.isNull && !this.isUndefined && !Array.isArray(this.data) && typeof this.data === 'object'
+      return (
+        !this.isNull
+        && !this.isUndefined
+        && !Array.isArray(this.data)
+        && typeof this.data === 'object'
+      );
     },
     isArray() {
       return Array.isArray(this.data);
@@ -80,7 +105,7 @@ export default {
       if (this.isPrimitive) {
         dataValueClass.push([
           'data__value--primitive',
-          `data__value--${this.dataType}`
+          `data__value--${this.dataType}`,
         ]);
       }
 
@@ -108,9 +133,9 @@ export default {
     toggleNode() {
       if (this.isPrimitive) return;
       this.open = !this.open;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
