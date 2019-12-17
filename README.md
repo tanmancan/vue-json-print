@@ -15,21 +15,22 @@ npm install vue-json-print
 
 ## Usage
 
-This package provides a single file component meant to work with your existing Vue app. To use imply import the component and use with your app.
+This package provides a single file component meant to work with your existing Vue app. To use, simply import the component and use within your app.
 
 ```javascript
-const JsonTree = import 'json-tree-print'
-const Vue from 'vue';
+import JsonTree from 'json-tree-print'
+import Vue from 'vue';
 
 Vue.component('json-tree', JsonTree);
 ```
 
-## Options
+## Props
 
-### `dataObject` (`string|number|boolean|null|object|array`)
+### `dataObject`
+#### type: (`string`|`number`|`boolean`|`null`|`object`|`array`)
+#### default: `null`
 
-Javascript data to be displayed. Values must be valid JSON types. If an object is provided, keys must
-be valid JSON type. (ie. not `Symbol`);
+The data to be printed. Can be primitives, objects, or arrays. All values must be valid JSON types and all object keys must be valid JSON type. (ie. `string` not `Symbol`);
 
 ```javascript
 const myDataObject = {
@@ -45,9 +46,11 @@ const myDataObject = {
 <JsonTree :dataObject="myDataObject" />
 ```
 
-### `dataString` (`string`)
+### `dataString`
+#### type: (`string`)
+#### default: (`undefined`)
 
-A valid JSON string to be displayed. If both `dataString` and `dataObject` are passed, `dataObject` will be printed.
+The data to be printed, provided as a valid JSON string. The string will be parsed via `JSON.parse`. If both `dataString` and `dataObject` are provided, the `dataObject` value will be used.
 
 ```javascript
 const myDataString = '{"one":1, "two":2, "array":[true, false, "string"]}';
@@ -55,37 +58,29 @@ const myDataString = '{"one":1, "two":2, "array":[true, false, "string"]}';
 <JsonTree :dataString="myDataString" />
 ```
 
-### `expanded` (`boolean`)
+### `expanded`
+#### type: (`boolean`)
+#### default: `false`
 
-Displays the tree in an expanded state. By default each nested node will always be collapsed.
+Displays the entire tree in an expanded state. By default all nested nodes in the tree are collapsed.
 
 ```javascript
 const myDataObject = {
-  one: 1,
-  two: 2,
-  array: [
-    true,
-    false,
-    'string',
-  ],
+  ...
 };
 
 <JsonTree expanded :dataObject="myDataObject" />
 ```
 
-### `depth` (`number`)
+### `depth`
+#### type: (`number`)
+#### default: `0`
 
-Limits how many nested nodes to print. Default of 0 will print all nodes. This is useful for deeply nested JSON data, where you may not want to output every single node.
+Limits how many levels deep to display child nodes. Value of `0` will print all child nodes. Useful for deeply nested data, when you want to limit the number of node displayed.
 
 ```javascript
 const myDataObject = {
-  one: 1,
-  two: 2,
-  array: [
-    true,
-    false,
-    'string',
-  ],
+  ...
 };
 
 <JsonTree :depth="2" :dataObject="myDataObject" />
