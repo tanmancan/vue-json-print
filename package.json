@@ -11,7 +11,7 @@
     "tree"
   ],
   "main": "./dist/vue-json-print.common.js",
-  "browsers": {
+  "browser": {
     "./sfc": "./src/components/JsonTree.vue"
   },
   "files": [
@@ -27,7 +27,8 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib ./src/components/JsonTree.vue",
+    "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --target lib ./src/components/JsonTree.vue --mode production",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepublishOnly": "npm run test:unit"
