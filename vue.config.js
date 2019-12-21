@@ -1,4 +1,6 @@
 module.exports = {
-  publicPath: '/examples/vue-json-print',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/examples/vue-json-print'
+    : '/',
   css: { extract: false },
 };

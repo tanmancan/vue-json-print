@@ -1,6 +1,6 @@
 # Vue JSON Print
 
-Pretty prints JSON object in a collapsible tree view.
+Pretty prints JSON object in a collapsible tree view. A react version is available [here](https://www.npmjs.com/package/react-json-print).
 
 Demo: https://tanmancan.github.io/examples/vue-json-print/
 
@@ -18,10 +18,18 @@ npm install vue-json-print
 This package provides a single file component meant to work with your existing Vue app. To use, simply import the component and use within your app.
 
 ```javascript
-import JsonTree from 'json-tree-print'
+import JsonTree from 'vue-json-print'
 import Vue from 'vue';
 
 Vue.component('json-tree', JsonTree);
+```
+
+### Using the `.vue` file directly.
+
+In certain cases, such as server side rendering, you may need to access the `.vue` component file directly. The package provides the source component file that you can easily import into your project.
+
+```javascript
+import JsonTree from 'vue-json-print/src/components/JsonTree.vue';
 ```
 
 ## Props

@@ -11,10 +11,12 @@
     <h2>Limits output to 3 nested nodes</h2>
     <JsonTree
     :depth="3"
+    expanded
     :data-object="exampleDataJavascript" />
 <pre>{{ typeof exampleDataJavascript }}: {{ exampleDataJavascript }}</pre>
     <h2>Print all nodes as expanded</h2>
     <JsonTree
+    :depth="3"
     :data-object="exampleDataJson" expanded />
 <pre>{{ typeof exampleDataJson }}: {{ exampleDataJson }}</pre>
     <h2>Uses a JSON string value</h2>

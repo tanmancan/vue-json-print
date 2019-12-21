@@ -4,6 +4,7 @@
   "formed": 2016,
   "secretBase": "Super tower",
   "active": true,
+  "empty": {},
   "members": [
     {
       "name": "Molecule Man",
