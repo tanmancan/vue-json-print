@@ -82,7 +82,12 @@ export default {
     },
     dataValue() {
       if (this.isArray) return `Array[${this.data.length}]`;
-      if (this.isObject) return 'Object';
+      if (this.isObject) {
+        const objLength = Object.keys(this.data).length;
+        return objLength
+          ? 'Object'
+          : 'Object (empty)';
+      }
       return this.primitiveValue;
     },
     primitiveValue() {
@@ -116,6 +121,9 @@ export default {
     },
     isNull() {
       return this.data === null;
+    },
+    isUndefined() {
+      return this.data === undefined;
     },
     dataValueClass() {
       const dataValueClass = [
